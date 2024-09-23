@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "delWhereList",
+    "pageId": "数据查看",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "数据查看_delWhereList",
+  "deleted": false,
+  "gitSyncId": "66150a560d28ff79ca3b037a_661635fc0d28ff79ca3b03c1"
+}

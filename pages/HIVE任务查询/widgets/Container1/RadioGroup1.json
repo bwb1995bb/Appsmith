@@ -1,0 +1,63 @@
+{
+    "needsErrorInfo": false,
+    "boxShadow": "none",
+    "mobileBottomRow": 20,
+    "widgetName": "RadioGroup1",
+    "iconSVG": "/static/media/icon.99c101b3b70073f9c00e9af6523f9427.svg",
+    "displayName": "Radio Group",
+    "topRow": 14,
+    "searchTags": ["choice"],
+    "bottomRow": 20,
+    "parentRowSpace": 10,
+    "labelWidth": 5,
+    "type": "RADIO_GROUP_WIDGET",
+    "hideCard": false,
+    "mobileRightColumn": 21,
+    "defaultOptionValue": "getUpstreamTask",
+    "animateLoading": true,
+    "parentColumnSpace": 21.882080078125,
+    "dynamicTriggerPathList": [],
+    "leftColumn": 0,
+    "dynamicBindingPathList": [{"key": "accentColor"}],
+    "labelPosition": "Top",
+    "options": [
+        {
+            "label": "查询上游依赖",
+            "value": "getUpstreamTask"
+        },
+        {
+            "label": "查询下游依赖",
+            "value": "getDownTask"
+        },
+        {
+            "label": "查询所有依赖",
+            "value": "getAllTask"
+        }
+    ],
+    "isDisabled": false,
+    "flexVerticalAlignment": "start",
+    "key": "m74sxi8akk",
+    "labelTextSize": "0.875rem",
+    "isRequired": false,
+    "isDeprecated": false,
+    "rightColumn": 23,
+    "dynamicHeight": "AUTO_HEIGHT",
+    "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+    "widgetId": "xep0p8v6fz",
+    "isVisible": true,
+    "label": "查询依赖方式",
+    "version": 1,
+    "parentId": "vd4nritqho",
+    "tags": ["Toggles"],
+    "isLoading": false,
+    "labelAlignment": "left",
+    "renderMode": "CANVAS",
+    "mobileTopRow": 14,
+    "originalTopRow": 14,
+    "mobileLeftColumn": 1,
+    "maxDynamicHeight": 9000,
+    "originalBottomRow": 20,
+    "isInline": true,
+    "alignment": "left",
+    "minDynamicHeight": 4
+}

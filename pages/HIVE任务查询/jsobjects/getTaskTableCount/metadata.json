@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "getTaskTableCount",
+    "pageId": "HIVE任务查询",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "HIVE任务查询_getTaskTableCount",
+  "deleted": false,
+  "gitSyncId": "66150a560d28ff79ca3b037a_66442c570d28ff79ca3b06c7"
+}

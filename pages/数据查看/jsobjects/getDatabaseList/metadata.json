@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "getDatabaseList",
+    "pageId": "数据查看",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "数据查看_getDatabaseList",
+  "deleted": false,
+  "gitSyncId": "66150a560d28ff79ca3b037a_661511690d28ff79ca3b0387"
+}

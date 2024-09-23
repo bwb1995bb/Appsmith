@@ -1,0 +1,20 @@
+{
+  "unpublishedCollection": {
+    "name": "functions",
+    "pageId": "登录页",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [
+      {
+        "name": "defaultTab",
+        "value": "'Sign In'"
+      }
+    ],
+    "userPermissions": []
+  },
+  "id": "登录页_functions",
+  "deleted": false,
+  "gitSyncId": "66f1166a5e2c3909d07245ed_66f118d65e2c3909d07246fb"
+}

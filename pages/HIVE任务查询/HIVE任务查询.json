@@ -1,0 +1,73 @@
+{
+  "unpublishedPage": {
+    "name": "HIVE任务查询",
+    "slug": "hive",
+    "customSlug": "hivetask",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 1224,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 1070,
+          "containerStyle": "none",
+          "snapRows": 89,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 89,
+          "minHeight": 910,
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "HIVE任务查询_getTaskTableCount.getData",
+              "name": "getTaskTableCount.getData",
+              "collectionId": "HIVE任务查询_getTaskTableCount",
+              "clientSideExecution": true,
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function (sinkTable, sourceTables) {\n  if (sinkTable != null && sinkTable != '' && sourceTables != null && sourceTables != '') {\n    const url = 'http://172.16.92.180:11005/api/v1//hive/getTaskTableCount' + '?sinkTable=' + sinkTable + '&sourceTables=' + sourceTables;\n    return fetch(url).then(response => {\n      if (!response.ok) {\n        throw new Error('Network response was not ok ' + response.statusText);\n      }\n      return response.json();\n    }).then(data => {\n      if (data.length > 0) {\n        showModal('Modal1');\n      }\n      return data;\n    }).catch(error => {\n      console.error('There has been a problem with your fetch operation:', error);\n    });\n  }\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "HIVE任务查询_getUpstreamTask.getData",
+              "name": "getUpstreamTask.getData",
+              "collectionId": "HIVE任务查询_getUpstreamTask",
+              "clientSideExecution": true,
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  var workFlowName = Input1.text;\n  var nodeFlowName = Input2.text;\n  var tableName = Input3.text;\n  const url = 'http://172.16.92.180:11005/api/v1/hive/' + RadioGroup1.selectedOptionValue + '?workFlowName=' + workFlowName + '&nodeFlowName=' + nodeFlowName + '&tableName=' + tableName;\n  return fetch(url).then(response => {\n    if (!response.ok) {\n      throw new Error('Network response was not ok ' + response.statusText);\n    }\n    return response.json();\n  }).then(data => {\n    return data;\n  }).catch(error => {\n    console.error('There has been a problem with your fetch operation:', error);\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "HIVE任务查询",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "66f1166a5e2c3909d07245ed_66f1166a5e2c3909d07245fa"
+}

@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "getCKTables",
+    "pageId": "CK迁移表",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "CK迁移表_getCKTables",
+  "deleted": false,
+  "gitSyncId": "66150a560d28ff79ca3b037a_66ece3525e2c3909d072440a"
+}

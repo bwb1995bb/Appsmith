@@ -1,0 +1,15 @@
+{
+  "unpublishedCollection": {
+    "name": "addWhereList",
+    "pageId": "数据查看",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "variables": [],
+    "userPermissions": []
+  },
+  "id": "数据查看_addWhereList",
+  "deleted": false,
+  "gitSyncId": "66150a560d28ff79ca3b037a_66163cc20d28ff79ca3b03c6"
+}

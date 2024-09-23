@@ -1,0 +1,86 @@
+{
+  "unpublishedPage": {
+    "name": "数据查看",
+    "slug": "",
+    "customSlug": "dataview",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 4896,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 3320,
+          "containerStyle": "none",
+          "snapRows": 124,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 89,
+          "minHeight": 1292,
+          "dynamicTriggerPathList": [],
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "数据查看_getDatasourceList.getData",
+              "name": "getDatasourceList.getData",
+              "collectionId": "数据查看_getDatasourceList",
+              "clientSideExecution": true,
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  const url = 'http://172.16.92.180:11003/api/v1/datasource/list/allDsName';\n  return fetch(url).then(response => {\n    if (!response.ok) {\n      throw new Error('Network response was not ok ' + response.statusText);\n    }\n    return response.json();\n  }).then(data => {\n    let resArr = [];\n    for (var i = 0; i < data.length; i++) {\n      var obj = data[i];\n      var colLabel = obj.datasourceName + '(' + obj.hostname + ')';\n      var resObj = {\n        label: colLabel,\n        value: obj.id\n      };\n      resArr[i] = resObj;\n    }\n    return resArr;\n  }).catch(error => {\n    console.error('There has been a problem with your fetch operation:', error);\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "数据查看_queryTableCount.getData",
+              "name": "queryTableCount.getData",
+              "collectionId": "数据查看_queryTableCount",
+              "clientSideExecution": true,
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  var dsId = SelectDatasource.selectedOptionValue;\n  var dbNa = SelectDatabase.selectedOptionValue;\n  var taNa = SelectTable.selectedOptionValue;\n  let sqlWhere;\n  if (RadioGroupWhere.selectedOptionValue == 'Y') {\n    let whereListData = appsmith.store.where_list_data;\n    let mutableString = [];\n    for (var i = 0; i < whereListData.length; i++) {\n      var obj = whereListData[i];\n      if (obj.SelectColumn != '' && obj.SelectOP != '' && obj.InputWhere != '') {\n        if (obj.SelectOP == 'like') {\n          var sql1 = obj.SelectColumn + \" \" + obj.SelectOP + \" '%25\" + obj.InputWhere + \"%25' \";\n          mutableString.push(sql1);\n        } else {\n          var sql2 = obj.SelectColumn + \" \" + obj.SelectOP + \" \\'\" + obj.InputWhere + \"\\' \";\n          mutableString.push(sql2);\n        }\n        if (i != whereListData.length - 1) {\n          mutableString.push(\" and \");\n        }\n      }\n    }\n    sqlWhere = mutableString.join('');\n  } else {\n    sqlWhere = InputWhereCust.text;\n  }\n  if (dsId != '' && dbNa != '' && taNa != '') {\n    const url = 'http://172.16.92.180:11003/api/v1/datasource/queryTableCount?datasourceId=' + dsId + '&database=' + dbNa + '&table=' + taNa + '&pageNo=' + TableSelect.pageNo + '&pageSize=' + TableSelect.pageSize + '&sqlWhere=' + sqlWhere;\n    return fetch(url).then(response => {\n      if (!response.ok) {\n        throw new Error('Network response was not ok ' + response.statusText);\n      }\n      return response.json();\n    }).then(data => {\n      return data;\n    }).catch(error => {\n      console.error('There has been a problem with your fetch operation:', error);\n    });\n  } else {\n    return 0;\n  }\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "数据查看_queryTableData.getData",
+              "name": "queryTableData.getData",
+              "collectionId": "数据查看_queryTableData",
+              "clientSideExecution": true,
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  var dsId = SelectDatasource.selectedOptionValue;\n  var dbNa = SelectDatabase.selectedOptionValue;\n  var taNa = SelectTable.selectedOptionValue;\n  let sqlWhere;\n  if (RadioGroupWhere.selectedOptionValue == 'Y') {\n    let whereListData = appsmith.store.where_list_data;\n    let mutableString = [];\n    for (var i = 0; i < whereListData.length; i++) {\n      var obj = whereListData[i];\n      if (obj.SelectColumn != '' && obj.SelectOP != '' && obj.InputWhere != '') {\n        if (obj.SelectOP == 'like') {\n          var sql1 = obj.SelectColumn + \" \" + obj.SelectOP + \" '%25\" + obj.InputWhere + \"%25' \";\n          mutableString.push(sql1);\n        } else {\n          var sql2 = obj.SelectColumn + \" \" + obj.SelectOP + \" \\'\" + obj.InputWhere + \"\\' \";\n          mutableString.push(sql2);\n        }\n        if (i != whereListData.length - 1) {\n          mutableString.push(\" and \");\n        }\n      }\n    }\n    sqlWhere = mutableString.join('');\n  } else {\n    sqlWhere = InputWhereCust.text;\n  }\n  if (dsId != '' && dbNa != '' && taNa != '') {\n    const url = 'http://172.16.92.180:11003/api/v1/datasource/queryTableData?datasourceId=' + dsId + '&database=' + dbNa + '&table=' + taNa + '&pageNo=' + TableSelect.pageNo + '&pageSize=' + TableSelect.pageSize + '&orderColumn=' + TableSelect.sortOrder.column + '&orderAsc=' + (TableSelect.sortOrder.order == null ? '' : TableSelect.sortOrder.order) + '&sqlWhere=' + sqlWhere;\n    return fetch(url).then(response => {\n      if (!response.ok) {\n        throw new Error('Network response was not ok ' + response.statusText);\n      }\n      return response.json();\n    }).then(data => {\n      return data;\n    }).catch(error => {\n      console.error('There has been a problem with your fetch operation:', error);\n    });\n  } else {\n    return [];\n  }\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "数据查看",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "66f1166a5e2c3909d07245ed_66f1166a5e2c3909d07245f7"
+}

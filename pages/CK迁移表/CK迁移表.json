@@ -1,0 +1,95 @@
+{
+  "unpublishedPage": {
+    "name": "CK迁移表",
+    "slug": "ck",
+    "customSlug": "cktable",
+    "layouts": [
+      {
+        "viewMode": false,
+        "dsl": {
+          "widgetName": "MainContainer",
+          "backgroundColor": "none",
+          "rightColumn": 1224,
+          "snapColumns": 64,
+          "detachFromLayout": true,
+          "widgetId": "0",
+          "topRow": 0,
+          "bottomRow": 740,
+          "containerStyle": "none",
+          "snapRows": 79,
+          "parentRowSpace": 1,
+          "type": "CANVAS_WIDGET",
+          "canExtend": true,
+          "version": 89,
+          "minHeight": 810,
+          "parentColumnSpace": 1,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0
+        },
+        "layoutOnLoadActions": [
+          [
+            {
+              "id": "CK迁移表_getCKTables.getData",
+              "name": "getCKTables.getData",
+              "collectionId": "CK迁移表_getCKTables",
+              "clientSideExecution": true,
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  const url = 'http://172.16.92.180:11005/api/v1/ckTransfer/getCkTable/' + '?sourceCKDsId=' + SelectSorCKDS.selectedOptionValue + '&sinkCKDsId=' + SelectSinkCKDS.selectedOptionValue + '&database=' + SelectDB.selectedOptionValue + '&searchText=' + TableCK.searchText + '&pageNo=' + TableCK.pageNo + '&pageSize=' + TableCK.pageSize;\n  return fetch(url).then(response => {\n    if (!response.ok) {\n      throw new Error('Network response was not ok ' + response.statusText);\n    }\n    return response.json();\n  }).then(data => {\n    return data;\n  }).catch(error => {\n    console.error('There has been a problem with your fetch operation:', error);\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "CK迁移表_getCKTablesCount.getData",
+              "name": "getCKTablesCount.getData",
+              "collectionId": "CK迁移表_getCKTablesCount",
+              "clientSideExecution": true,
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  const url = 'http://172.16.92.180:11005/api/v1/ckTransfer/getCkCount/' + '?sourceCKDsId=' + SelectSorCKDS.selectedOptionValue + '&database=' + SelectDB.selectedOptionValue + '&searchText=' + TableCK.searchText;\n  return fetch(url).then(response => {\n    if (!response.ok) {\n      throw new Error('Network response was not ok ' + response.statusText);\n    }\n    return response.json();\n  }).then(data => {\n    return data;\n  }).catch(error => {\n    console.error('There has been a problem with your fetch operation:', error);\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "CK迁移表_getColumnListCK.getData",
+              "name": "getColumnListCK.getData",
+              "collectionId": "CK迁移表_getColumnListCK",
+              "clientSideExecution": true,
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  const url = 'http://172.16.92.180:11003/api/v1/datasource/getAllColumn?id=' + SelectSorCKDS.selectedOptionValue + '&database=' + appsmith.store.tranCkTable.database + '&table=' + appsmith.store.tranCkTable.name;\n  return fetch(url).then(response => {\n    if (!response.ok) {\n      throw new Error('Network response was not ok ' + response.statusText);\n    }\n    return response.json();\n  }).then(data => {\n    let resArr = [];\n    for (var i = 0; i < data.length; i++) {\n      var obj = data[i];\n      if (obj.columnDesc) {}\n      var colLabel = obj.columnDesc == null || obj.columnDesc == '' ? obj.name : obj.name + '(' + obj.columnDesc + ')';\n      var resObj = {\n        label: colLabel,\n        value: obj.name\n      };\n      resArr[i] = resObj;\n    }\n    storeValue(\"select_column_data\", resArr);\n    return resArr;\n  }).catch(error => {\n    console.error('There has been a problem with your fetch operation:', error);\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            },
+            {
+              "id": "CK迁移表_getDatabaseList.getData",
+              "name": "getDatabaseList.getData",
+              "collectionId": "CK迁移表_getDatabaseList",
+              "clientSideExecution": true,
+              "confirmBeforeExecute": false,
+              "pluginType": "JS",
+              "jsonPathKeys": [
+                "function () {\n  const url = 'http://172.16.92.180:11003/api/v1/datasource/getAllDatabases?id=' + SelectSorCKDS.selectedOptionValue;\n  return fetch(url).then(response => {\n    if (!response.ok) {\n      throw new Error('Network response was not ok ' + response.statusText);\n    }\n    return response.json();\n  }).then(data => {\n    let resArr = [];\n    for (var i = 0; i < data.length; i++) {\n      var obj = data[i];\n      var resObj = {\n        label: obj,\n        value: obj\n      };\n      resArr[i] = resObj;\n    }\n    return resArr;\n  }).catch(error => {\n    console.error('There has been a problem with your fetch operation:', error);\n  });\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ]
+        ],
+        "layoutOnLoadActionErrors": [],
+        "validOnPageLoadActions": true,
+        "id": "CK迁移表",
+        "deleted": false,
+        "policies": [],
+        "userPermissions": []
+      }
+    ],
+    "userPermissions": [],
+    "policies": [],
+    "isHidden": false
+  },
+  "deleted": false,
+  "gitSyncId": "66f1166a5e2c3909d07245ed_66f1166a5e2c3909d07245f9"
+}
